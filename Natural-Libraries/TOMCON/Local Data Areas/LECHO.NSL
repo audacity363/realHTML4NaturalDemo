@@ -1,0 +1,12 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+1 echo
+    2 message (A) DYNAMIC
+    
+1 put-echo
+    2 first-message (A) DYNAMIC
+    2 second-message (A) DYNAMIC
+END-DEFINE

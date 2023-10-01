@@ -1,0 +1,33 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+1 order-list (1:*)
+    2 order-id (i4)
+    2 customer-id (i4)
+    2 article-count (i4)
+
+1 order
+    2 order-id (i4)
+    2 customer-id (i4)
+    2 customer-name (A) DYNAMIC
+    2 article (1:*)
+        3 article-id (I4)
+        3 article-name (A) DYNAMIC
+        3 article-quantity  (I4)
+
+1 article-list-params
+    2 article-id-filter (A) DYNAMIC
+    2 article-name-filter (A) DYNAMIC
+
+1 article-list (1:*)
+    2 article-id (I4)
+    2 article-name (A) DYNAMIC
+
+1 article-details
+    2 article-id (I4)
+    2 article-name (A) DYNAMIC
+    2 article-description (A) DYNAMIC
+    2 price (N4.2)
+END-DEFINE

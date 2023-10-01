@@ -1,0 +1,8 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+1 http-req-type (A) DYNAMIC
+1 rh4n-internals (B) DYNAMIC
+END-DEFINE

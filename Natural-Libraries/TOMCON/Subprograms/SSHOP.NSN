@@ -1,0 +1,80 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+define data
+    parameter using rh4nparm
+    local using rh4ncons
+    local using lshop
+    local
+        1 cmd (A) DYNAMIC
+end-define
+
+include rh4nhand
+
+define subroutine get-handler
+    call interface4 RH4N-GET-URL-VARIABLE rh4n-internals 'cmd' cmd
+    
+    decide on first value of cmd
+        value "articledetail"
+            perform get-article-detail
+        value "order"
+            perform get-order
+        value "article-list"
+            perform get-article-list
+        none value
+            compress "cmd [" cmd "] unkown" into RH4NERR.errorDescription leaving no
+            call interface4 RH4N-GENERATE-JSON rh4n-internals 'RH4NERR@RH4N.RH4NCONS' rh4nerr
+    end-decide
+end-subroutine
+
+define subroutine get-article-detail
+    article-details.article-id := 4711
+    article-details.article-name := "Article 4711"
+    article-details.article-description := "I am just a description"
+    article-details.price := 73.63
+   
+    call interface4 RH4N-GENERATE-JSON rh4n-internals 'article-details@LSHOP' article-details
+end-subroutine
+
+define subroutine get-order
+    order.order-id := 936
+    order.customer-id := 376
+    order.customer-name := "Customer 376"
+     
+    expand array order.article to (1:2)
+    order.article-id(1) := 4711
+    order.article-name(1) := "Article 4711"
+    order.article-quantity(1) := 2
+     
+    order.article-id(2) := 0815
+    order.article-name(2) := "Article 0815"
+    order.article-quantity(2) := 73
+     
+    call interface4 RH4N-GENERATE-JSON rh4n-internals 'order@LSHOP' order
+end-subroutine
+
+define subroutine get-article-list
+    expand array article-list to (1:2)
+    
+    article-list.article-id(1) := 4711
+    article-list.article-name(1) := "Article 4711"
+    
+    article-list.article-id(2) := 0815
+    article-list.article-name(2) := "Article 0815"
+    call interface4 RH4N-GENERATE-JSON rh4n-internals 'article-list@LSHOP' article-list(*) 
+end-subroutine
+
+define subroutine post-handler
+    ignore
+end-subroutine
+
+define subroutine put-handler
+    ignore 
+end-subroutine
+
+define subroutine delete-handler
+    ignore
+end-subroutine
+
+END

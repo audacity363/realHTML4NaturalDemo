@@ -1,0 +1,14 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+1 RH4N-GENERATE-JSON      (A) DYNAMIC const <'RHGENJS'>
+1 RH4N-GET-URL-VARIABLE   (A) DYNAMIC const <'RHGETUV'>
+1 RH4N-GET-BODY-VARIABLE  (A) DYNAMIC const <'RHGETBV'>
+1 RH4N-GET-BODY-OBJECT    (A) DYNAMIC const <'RHGETBO'>
+
+1 RH4NERR
+    2 error (i4)
+    2 errorDescription (A) DYNAMIC
+END-DEFINE

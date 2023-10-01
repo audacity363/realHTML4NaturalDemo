@@ -1,0 +1,18 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+
+decide on first value of http-req-type
+    value "GET"
+        perform get-handler
+    value "POST"
+        perform post-handler
+    value "PUT"
+        perform put-handler
+    value "DELETE"
+        perform delete-handler
+    none value 
+        /* TODO: Generate Error
+        ignore
+end-decide
